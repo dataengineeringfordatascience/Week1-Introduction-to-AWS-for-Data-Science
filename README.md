@@ -12,12 +12,14 @@ Week1: Introduction to AWS for Data Science
 첫 주차에는 다음과 같은 내용으로 진행하였습니다.    
 <br>
 <br>
+
 **1주차 주제: Introduction to AWS for Data Science**
 - data-driven product 개발과 관련된 AWS 서비스에 대한 이해
 - 각자 1가지 서비스씩 정해서 공부한 후, 20분씩 서비스에 대한 발제(5분~10분) & 질의응답 & 토론
 - 자료 조사 및 발제 준비 내용은 Github에 공유  
 <br>
 <br>
+
 **발제에 포함되면 좋을 내용:**
 - 선택한 AWS 서비스의 개요
 - 다른 경쟁사에서 제공하고 있는 동일한 서비스와의 공통점 및 차이점
@@ -25,6 +27,7 @@ Week1: Introduction to AWS for Data Science
 - 요금 부과 체계(직접 실습해볼 때 요금폭탄을 맞지 않기 위해)   
 <br>
 <br>
+
 **아래 AWS 중 1가지 또는 2가지 선택하여 준비**
 - Elastic Compute Cloud (EC2) : 가상 서버
 - Simple Storage Service (S3) : 객체 스토리지
