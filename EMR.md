@@ -27,5 +27,6 @@ AWS의 EMR은 Elastic MapReduce의 줄임말로 관리형 하둡 프레임워크
 : interactive하게 분석결과를 볼 수 있다.
 
 **3. EMR 활용 사례**
-<img href="https://d0.awsstatic.com/logos/customers/KO/mangoplate%20architecture%20diagram.png", width="100" height="100"></img>
+<img src="https://d0.awsstatic.com/logos/customers/KO/mangoplate%20architecture%20diagram.png">
+
 
