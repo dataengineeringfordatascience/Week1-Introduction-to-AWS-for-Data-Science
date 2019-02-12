@@ -23,12 +23,13 @@ AWS의 EMR은 Elastic MapReduce의 줄임말로 관리형 하둡 프레임워크
 - 오픈소스 프로젝트(Apache Hive 및 Apache Pig)를 사용하여 분석용 데이터와 BI 워크로드를 처리.<br/>
 : 사용자 선택에 따라 데이터 처리하는 방식(하둡 소프트웨어)을 선택할 수 있다. 
 - 데이터 스토어 및 데이터베이스(Amazon S3 및 Amazon DynamoDB)에서 데이터를 양방향으로 변환/이동.<br/>
-: 기본적으로 AWS S3를 사용하지만 사용자 선택에 따라 다른 데이터 스토어도 가능함.
+: 기본적으로 AWS S3를 사용하지만 사용자 선택에 따라 다른 데이터 스토어도 사용가능함.
 - Jupyter Notebook에 기반한 EMR Notebooks : 임시 쿼리 및 탐색 분석을 위한 개발 및 협업 환경을 제공 <br/>
 : interactive하게 분석결과를 볼 수 있다.
 
 **3. EMR 활용 사례** [출처](https://aws.amazon.com/ko/blogs/korea/mangoplate-customer-case/) 
-<br/> 망고플레이트에서 이미 EMR을 활용해서 비용절감 효과를 보고 있다.
+<p> 망고플레이트에서 이미 EMR을 활용해서 비용절감 효과를 보고 있다.</p>
+<br/>
 > "비용 측면에서 Amazon EMR은 사용할 때만 비용을 지불하는 방식이기 때문에 최대 20배까지 비용을 줄일 수 있었고, Amazon EC2는 오토스케일링을 적용하고 나서 20 – 30%까지 절감할 수 있었다"
 <img src="https://d0.awsstatic.com/logos/customers/KO/mangoplate%20architecture%20diagram.png">
  
