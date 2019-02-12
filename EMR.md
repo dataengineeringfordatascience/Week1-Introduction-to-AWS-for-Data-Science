@@ -1,7 +1,7 @@
 # EMR
 
-**0. EMR 이햬를 위한 선결조건 : HADOOP SYSTEM**
-- 하둡이란 무엇인가? <br/>
+**0. EMR 이햬를 위한 선결조건**
+- 하둡(HADOOP SYSTEM)이란 무엇인가? <br/>
 : 대용량 데이터를 분산하여 '저장'하고, 또 분산하여 '처리'하게 도와주는 프레임워크다. <br/>
 
  <p>
@@ -13,13 +13,18 @@
 **1. EMR 소개**
 
 <p>
-AWS의 EMR은 Elastic MapReduce의 줄임말로 관리형 하둡 프레임워크 클러스터 플랫폼이다. 결론부터 말하자면, AWS에서 제공하는 하둡 시스템이며 풀어서 설명하면 다음과 같다. AWS에서 제공하는 EC2 클러스터를 활용하여 하둡시스템을 구축하고, 기업의 secondly job task에 맞게 실시간으로(탄력적으로) 데이터를 분산처리하는 서비스다.  
+AWS의 EMR은 Elastic MapReduce의 줄임말로 관리형 하둡 프레임워크 클러스터 플랫폼이다. 결론부터 말하자면, AWS에서 제공하는 하둡 시스템이며 풀어서 설명하면 다음과 같다. AWS에서 제공하는 EC2 클러스터를 중심으로 하둡시스템을 구축하고, 기업의 secondly job task에 맞게 실시간으로(탄력적으로) 데이터를 분산처리하는 서비스다. 
 </p>
 
 **2. EMR 특징**
-- 빅데이터 분산 프레임워크(Apache Hadoop 및 Apache Spark) 실행 간소화. 
-- 오픈소스 프로젝트(Apache Hive 및 Apache Pig)를 사용하여 분석용 데이터와 비즈니스 인텔리전스 워크로드를 처리.
-- 데이터 스토어 및 데이터베이스(Amazon S3 및 Amazon DynamoDB)에서  데이터를 양방향으로 변환/이동.
-- Jupyter Notebook에 기반한 EMR Notebooks : 임시 쿼리 및 탐색 분석을 위한 개발 및 협업 환경을 제공 
+- 빅데이터 분산 프레임워크(Apache Hadoop 및 Apache Spark) 실행 간소화. <br/>
+: 분산처리가능한 환경설정 등 분석외 부수적 업무가 필요없다.
+- 오픈소스 프로젝트(Apache Hive 및 Apache Pig)를 사용하여 분석용 데이터와 BI 워크로드를 처리.<br/>
+: 사용자 선택에 따라 데이터 처리하는 방식(하둡 소프트웨어)을 선택할 수 있다. 
+- 데이터 스토어 및 데이터베이스(Amazon S3 및 Amazon DynamoDB)에서 데이터를 양방향으로 변환/이동.<br/>
+: 기본적으로 AWS S3를 사용하지만 사용자 선택에 따라 다른 데이터 스토어도 가능함.
+- Jupyter Notebook에 기반한 EMR Notebooks : 임시 쿼리 및 탐색 분석을 위한 개발 및 협업 환경을 제공 <br/>
+: interactive하게 분석결과를 볼 수 있다.
 
 **3. EMR 활용 사례**
+!(https://d0.awsstatic.com/logos/customers/KO/mangoplate%20architecture%20diagram.png)
