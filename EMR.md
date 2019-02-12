@@ -28,8 +28,8 @@ AWS의 EMR은 Elastic MapReduce의 줄임말로 관리형 하둡 프레임워크
 : interactive하게 분석결과를 볼 수 있다.
 
 **3. EMR 활용 사례** [출처](https://aws.amazon.com/ko/blogs/korea/mangoplate-customer-case/) 
-<p> 망고플레이트에서 이미 EMR을 활용해서 비용절감 효과를 보고 있다. </p>
->"비용 측면에서 Amazon EMR은 사용할 때만 비용을 지불하는 방식이기 때문에 최대 20배까지 비용을 줄일 수 있었고, Amazon EC2는 오토스케일링을 적용하고 나서 20 – 30%까지 절감할 수 있었다"
+<br/> 망고플레이트에서 이미 EMR을 활용해서 비용절감 효과를 보고 있다.
+> "비용 측면에서 Amazon EMR은 사용할 때만 비용을 지불하는 방식이기 때문에 최대 20배까지 비용을 줄일 수 있었고, Amazon EC2는 오토스케일링을 적용하고 나서 20 – 30%까지 절감할 수 있었다"
 <img src="https://d0.awsstatic.com/logos/customers/KO/mangoplate%20architecture%20diagram.png">
  
 
