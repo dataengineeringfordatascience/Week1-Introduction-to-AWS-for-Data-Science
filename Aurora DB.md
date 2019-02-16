@@ -1,4 +1,4 @@
-- # Aurora DB
+# Aurora DB
 
   - RDS란? (https://aws.amazon.com/ko/rds/)
     - AWS에서 제공하는 관계형 데이터베이스 서비스 
