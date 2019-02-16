@@ -1,8 +1,19 @@
 # Aurora DB
 
-  - RDS란? (https://aws.amazon.com/ko/rds/)
-    - AWS에서 제공하는 관계형 데이터베이스 서비스 
-    - ex) *Amazon Aurora*, PostgreSQL, MySQL, MariaDB, Oracle, Microsoft SQL Server
+
+
+## What is Aurora DB?
+
+- An Amazon Aurora *DB cluster* consists of one or more DB instances and a cluster volume that manages the data for those DB instances
+
+  ![aurora_db_cluster](C:\Users\1\Google 드라이브\2019data_engineering_study\aurora_db_cluster.png)
+
+  - Primary DB instance: Supports read and write operations, and performs all of the data modifications to the cluster volume. Each Aurora DB cluster has one primary DB instance.
+  - Aurora Replica: Connects to the same storage volume as the primary DB instance and supports only read operations. Each Aurora DB cluster can have up to 15 Aurora Replicas in addition to the primary DB instance. Maintain high availability by locating Aurora Replicas in separate Availability Zones. Aurora automatically fails over to an Aurora Replica in case the primary DB instance becomes unavailable. You can specify the failover priority for Aurora Replicas. Aurora Replicas can also offload read workloads from the primary DB instance.
+
+
+
+## Features
 
 ### Structure
 
@@ -11,14 +22,11 @@
 
 - SQL / Transaction과 Caching을 분리
 
-- 빠른 Crash Recovery  
-
-  - storage 수준에서 on-demand로 재생 (개빠름)
-  - 최종 check point로부터 log 재생 (안빠름)
+  - 캐시 웜업 X (인스턴스와 캐시가 분리) -> 빠른 시작 가능 (cold start 해결)
 
   
 
-### 분산 쓰기
+### How it writes data
 
 - MySQL
   ![MySQL](C:\Users\1\Google 드라이브\2019data_engineering_study\MySQL.PNG)
@@ -30,7 +38,13 @@
 - Mysql의 경우 순차적으로 primary instance와 standby instance에 쓰기 복제
 - aurora는 독립적인 복제 인스턴스에 병렬적으로 write
 
-  
+- 빠른 Crash Recovery  
+
+  - Aurora: storage 수준에서 on-demand로 재생 (개빠름)
+
+  - MySQL: 최종 check point로부터 log 재생 (안빠름)
+
+    
 
 ### Dosen't Aurora support multi AZ?
 
@@ -38,11 +52,10 @@
   따라서 한개의 AZ가 망가져도 다른 AZ가 살아있다면 서비스에 장애가 생기지 않는다.  
   이 기능을 멀티 AZ라 부르며 이 기능이 적용되면 콘솔상에선 1개의 DB 인스턴스처럼 보이더라도 실제론 여러개의 인스턴스가 생기게 된다. (그만큼 비용이 증가되는건 덤)
 - 하지만 오로라는 이 멀티 AZ를 지원하지 않는다.
-- 대신, 오로라는 Read Replica를 Failover에 사용한다. 
-- 여러 RR이 같은 클러스터로 묶여 있고 Write 권한이 있는 마스터가 다운되면 RR중 하나를 마스터로 자동 승격시켜 대응
-- 이 과정은 수초내로 기존 RDB 대비 굉장히 빨리 이루어진다
-- 이는 Storage가 Computation Unit과 물리적으로 분리되어 있으며 DNS 차원에서 연결을 승격된 RR로 바로 틀수 있기 때문이다
-  - (EB의 CNAME Swap 기능)
+  - 대신, 오로라는 Read Replica를 Failover에 사용한다. 
+  - 여러 RR이 같은 클러스터로 묶여 있고 Write 권한이 있는 마스터가 다운되면 RR중 하나를 마스터로 자동 승격시켜 대응.
+  - 이 과정은 수초내로 기존 RDB 대비 굉장히 빨리 이루어진다.
+  - 이는 Storage가 Computation Unit과 물리적으로 분리되어 있으며 DNS 차원에서 연결을 승격된 RR로 바로 틀수 있기 때문이다. (EB의 CNAME Swap 기능)
 
 
 
@@ -56,11 +69,10 @@
 
 - 최대 15개 replica
 - fail over 시에 데이터 유실 X(mysql의 경우 있음)
-- 캐시 웜업 X (인스턴스와 캐시가 분리)
 - 시점 복구Restore 제공  
 - 보안 강화
-- 보통 쪼끔 비쌈
-- 패치에 따른 downtime(인스턴스 재시작)
+- *보통 쪼끔 비쌈*
+- 패치에 따른 downtime 존재(인스턴스 재시작) -> 서비스 방해 가능
 - 64TB까지 storage 자동 증가 (사용한 만큼 과금)
 - 배치 삽입 성능 향상(인덱스 경유 x?)
 - 다차원 데이터 타입 지원: Geometry(R-tree, Z-index)
