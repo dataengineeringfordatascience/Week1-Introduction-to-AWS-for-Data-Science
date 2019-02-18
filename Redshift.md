@@ -4,7 +4,6 @@
 ### 1-1. Redshift 한 줄 소개
 AWS 에서 제공하는 페타바이트 규모의 엔터프라이즈급 **"완전 관리형"** **"데이터 웨어하우징 서비스"**. 데이터 웨어하우스와 데이터 레이크 전체에 걸쳐 간단하고 비용 효율적으로 모든 데이터를 분석할 수 있는 빠르고 확장 가능한 데이터 웨어하우스 서비스를 제공함. 
 - MPP(Massively Parallel Processing, 대용량 병렬처리) 데이터베이스를 데이터웨어하우스로 제공
-![image|1010x464](upload://nXBZhAQHhHWPvV5RztS0svrX3Oe.jpeg) 
 
 **완전 관리형 서비스란?**
 -  관리, 모니터링 및 확장하는 데 필요한 일반적인 관리 작업 대부분을 자동화하여 관리해주는 서비스라는 의미. 즉, 데이터 웨어하우스 설치, 업그레이드, 패치, 수동백업을 신경쓸 필요가 없음
@@ -15,18 +14,8 @@ AWS 에서 제공하는 페타바이트 규모의 엔터프라이즈급 **"완�
 - OLTP DB는  서비스에서 매우 중요. 분석용 DB는 분리하여 관리하는 움직임 생김 
 - OLTP DB에서 주기적 데이터 덤프나 지속적 갱신 스트림으로 데이터 추출(Extract), 분석 친화적인 스키마로 변환(Transform), 정리하여 DW에 적재
 
-![image|1161x453](upload://mktztMEX5WCVLCExVAQ35nSshpE.jpeg) 
-
-![image|968x712](upload://vWqy769bOkBVt35Res7k7Isa8k6.jpeg) 
-
-
-
-![image|1032x462](upload://vij3vOXRL8Ry9hj1Ep6igZWsOLT.jpeg) 
-
-
 
 ### 1-2. Redshift의 구조
-![image|487x459](upload://hr0BexORnG3Q6ZRS9NFi25PEY6E.png) 
 
 **1) 리더 노드**
 - SQL 쿼리의 엔드포인트. 쿼리문 최적화 하는 역할 수행
@@ -58,7 +47,6 @@ AWS 에서 제공하는 페타바이트 규모의 엔터프라이즈급 **"완�
 - Redshift 를 계속 크게 사용하는 게 아니라  일시적으로 크기를 키워 데이터 처리 후, S3로 백업하여 두고,  Redshift 클러스터는 꺼버릴 수 있음. 
 - 여러 리전에 복사해둘 수 있음(미국, 한국 두 곳에 카피해 둘 수 있음. 미국 지사에서 빠르게 데이터를 뽑아야 한다 --> 미국 지사 근처 리전에 복사해서 가져가고 데이터 불러서 분석)
 - 기존 리전에서 문제가 발생하면 바로 백업해주는 관리도 포함
-![image|412x442](upload://9gtMZAVjQsovHcQKHCwuo3AaQpm.png) 
 
 **4) 보안에 강함**
 - VPC로 다른 클러스터는 절대 Redshift에 접속할 수 없음
@@ -73,22 +61,19 @@ AWS 에서 제공하는 페타바이트 규모의 엔터프라이즈급 **"완�
 
 
 ## 2. 타사 서비스와의 공통점 및 차이점
-- 레드시프트 - 전용 리소스: 계산노드, 스토리지 일체화
+- 레드시프트 - 전용 리소스 이용. 계산노드, 스토리지 일체화되어있음
+- 빅쿼리(구글) - 공유 리소스 이용. 다수의 디스크에 데이터가 분산되어 있음. 
 
-- 빅쿼리(구글) - 공유 리소스
-![image|621x415](upload://wG5ks2mHEecf4svUprCuzWSXRWH.jpeg) 
 
 ## 3. 데이터 사이언스 관점에서 활용 사례
 - 아마존 닷컴: 기존 DW는 늘어나는 데이터를 빠르게 지원하지 못함. 
 >시간당 일주일치 분석, 하둡은 시간당 한달치 분석했는데, 15개월치 1PB 데이터 처리에 14분 소요.
-
 > 500억 로우 --> 로딩에 10분. 
-210억 로우 + 100억 로우 데이터 조인 후 쿼리 --> 2시간(하이브에선 3일)
+>210억 로우 + 100억 로우 데이터 조인 후 쿼리 --> 2시간(하이브에선 3일)
 
 - 스시로(일본 스시 체인):
 > 380개 매장에서 스트림 라이브 데이터 수집 --> 태블로에 시각화 하기까지 5분 소요
-![image|587x319](upload://3CUCVB0B8PsU90RQXcYCdhVGYtM.png) 
-
+> 실시간으로 수요를 체크하여 지점별 원재료 공급에 활용
 
 
 ## 4. 요금 부과 체계
@@ -111,13 +96,10 @@ Ref: https://aws.amazon.com/ko/redshift/pricing/
 
 
 **데이터 전송시 발생 비용 << 무슨 말인지 잘 모르겠음....**
-
-작업의 백업, 복원, 로드 및 언로드를 위해 동일한 AWS 리전 내에서 Amazon Redshift와 Amazon S3 간에 전송되는 데이터에는 비용이 부과되지 않습니다. Amazon Redshift에서 송수신되는 다른 모든 데이터에 대해서는 표준 [AWS 데이터 전송 요금](https://aws.amazon.com/ec2/pricing/)이 청구됩니다. 특히 Amazon VPC에서 Amazon Redshift 클러스터를 실행하는 경우 JDBC/ODBC를 통해 Amazon Redshift 클러스터 엔드포인트로 전송되는 데이터에 대해 표준 AWS 데이터 전송 요금이 부과됩니다. 또한, [향상된 VPC 라우팅](https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)을 사용하여 다른 리전에 있는 Amazon S3에 데이터를 언로드하면 표준 AWS 데이터 전송 요금이 발생합니다. AWS 데이터 전송 요금에 대한 자세한 내용은 [Amazon EC2 요금 페이지](https://aws.amazon.com/ec2/pricing/)를 참조하십시오.
-
-![image|907x512](upload://NMdiU2yNPN2p8ceqRs4nwt6Vig.png) 
-![image|893x495](upload://qYXenPlNoFQ0hGM11EBvGyW83ag.png) 
-
-
+- 작업의 백업, 복원, 로드 및 언로드를 위해 동일한 AWS 리전 내에서 Amazon Redshift와 Amazon S3 간에 전송되는 데이터에는 비용이 부과되지 않음
+- Amazon Redshift에서 송수신되는 다른 모든 데이터에 대해서는 표준 [AWS 데이터 전송 요금](https://aws.amazon.com/ec2/pricing/)이 청구.
+- Amazon VPC에서 Amazon Redshift 클러스터를 실행하는 경우 JDBC/ODBC를 통해 Amazon Redshift 클러스터 엔드포인트로 전송되는 데이터에 대해 표준 AWS 데이터 전송 요금이 부과
+- 또한, [향상된 VPC 라우팅](https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)을 사용하여 다른 리전에 있는 Amazon S3에 데이터를 언로드하면 표준 AWS 데이터 전송 요금이 발생
 
 **3) Redshift Spectrum 요금**
 - Amazon S3에 있는 엑사바이트 규모의 데이터에 SQL 쿼리를 직접 수행할 수 있음 
@@ -127,8 +109,6 @@ Ref: https://aws.amazon.com/ko/redshift/pricing/
 
 - Redshift Spectrum  작동 예시
 > 쿼리 날림 > 리더노드가 Spectrum으로 쿼리를 점길건지 판단 후 컴퓨트 노드로 쿼리 던짐 > 컴퓨트 노드는 사전에 정의해둔 데이터 카탈로그(메타 정보)를 읽어와서 레드시프트 스팩트럼으로 쿼리 던짐 > 스팩트럼이 S3에 있는 데이터 스캔 (스캔하는 데이터 사이즈별로 과금)>  s3에서 스팩트럼으로 데이터가 올라가서 조인, 필터링 등 수행 후 컴퓨트 노드로 전달 > 리더 노드가 합쳐서 보여줌
-![image|1052x580](upload://kXeyPfIpn79wjNrZuMSDPVjyd6d.jpeg) 
-
 
 - Redshift Spectrum 요금 예시
 > 크기가 같은 100개의 열이 있는 테이블이 Amazon S3에 압축이 안 된 텍스트 파일로 저장되어 있으며 전체 크기는 4테라바이트라고 가정해보겠습니다. 이 테이블의 한 열에서 데이터를 가져오도록 쿼리를 실행하면 Redshift Spectrum이 전체 파일을 스캔해야 합니다. 텍스트 형식은 분할될 수 없기 때문입니다. 이 쿼리는 4테라바이트를 스캔하고 요금은 20 USD(5 USD/TB * 4TB = **20 USD** )입니다.
