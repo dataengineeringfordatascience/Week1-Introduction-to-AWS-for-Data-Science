@@ -104,7 +104,7 @@
 
 
 ## 데이터 사이언스 관점에서의 활용 방법
-* 빅데이터 분석에의 EC2 활용 ([출처](../data/Big_Data_Analytics_Options_on_AWS.pdf))
+* 빅데이터 분석에의 EC2 활용 ([출처](./data/Big_Data_Analytics_Options_on_AWS.pdf))
   * 빅데이터 분석 어플리케이션의 자가 관리
     * MongoDB를 포함한 NoSQL
     * dw
@@ -137,8 +137,8 @@
   * 온디멘드 대비 40-70% 할인
 * 인스턴스의 라이프 사이클
   * 인스턴스 라이프 사이클에 따라 요금 부가 여부가 결정   
-![ec2 instance life cycle](../data/images/instance-life-cycle.png)   
-![ec2 instance life cycle explanation table](../data/images/instance-life-cycle-table.png)     
+![ec2 instance life cycle](./data/images/instance-life-cycle.png)   
+![ec2 instance life cycle explanation table](./data/images/instance-life-cycle-table.png)     
 * 이외에 elastic ip, ebs에 대한 요금 관리 필요
 * 출처
   * https://aws.amazon.com/ko/ec2/pricing/
